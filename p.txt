@@ -1,0 +1,53 @@
+
+
+function goToNextPage() {
+	window.location = '/mainmenu';
+}
+
+fadeEl.addEventListener("click", goToNextPage);
+
+
+
+
+
+
+var opacity = 0
+var opacityLimit = 10;
+var fadeEl = document.getElementById('fadeMe');
+console.log(fadeEl);
+fadeEl.style.opacity = opacity;
+
+function fade() {
+	if (opacity < opacityLimit) {
+		fadeEl.style.opacity = opacity / 10;
+		opacity++;
+		setTimeout(fade, 100);
+	} 
+}
+
+fade()
+
+      $(document).ready(function() {
+      	$(document).keyup(function(e) {
+            if (e.keyCode == '52') {
+				myAudio.pause();
+				myAudio.currentTime = 0;
+            }
+          });
+        });
+		
+		
+		
+	    $(document).ready(function() {
+	    	$(document).keydown(function(e) {
+			  if (e.keyCode == '52') {
+			  	myAudio = new Audio('/music/OregonTrailMusic.mp3'); 
+			  	myAudio.addEventListener('ended', function() {  	    
+					this.currentTime = 0;
+			  	    this.play();
+			  	}, false);
+			  	myAudio.play();
+	          }
+	        });
+	      });
+
