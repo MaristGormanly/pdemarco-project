@@ -1,24 +1,10 @@
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
-.centered {
-    position: absolute;
-    font-size: 35px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .parent {
   position: relative;
   top: 0;
   left: 0;
 }
 
-.image1 {
+.image {
   position: relative;
   top: 0;
   left: 0;
