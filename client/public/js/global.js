@@ -1,5 +1,6 @@
+//Fade in and Fade out text
 $(function () {
-    var $element = $('a');
+    var $element = $('a'||'h3');
     function fadeInOut () {
         $element.fadeIn(1000, function () {
             $element.fadeOut(1500, function () {
@@ -13,6 +14,7 @@ $(function () {
     fadeInOut();
 });
 
+//When user pressed spacebar key, pages goes to main menu page
 $(document).ready(function() {
 	$(document).keydown(function(e) {
       if (e.keyCode == '32') {
