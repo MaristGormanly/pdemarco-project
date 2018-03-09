@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+//Links all webpages to each other 
+
 app.use(express.static('client/public'));
 
 app.get('/', function(req, res) {
@@ -28,4 +30,5 @@ app.get('/game', function(req, res) {
 })
 
 
+//When port is open and working
 app.listen(1337, () => console.log('Listening on port 1337!'))
