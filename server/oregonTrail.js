@@ -63,15 +63,15 @@ app.route('/api/getAllWeather')
 app.route('/api/getGroupHealth')
 	.get(gameController.getGroupHealth);
 	
-app.route('/api/pace')
-	.get(gameController.getPace)
-	.post(gameController.getPace);
+//app.route('/api/pace')
+//	.get(gameController.getCurrentPace)
+//	.post(gameController.getCurrentPace);
 
 app.route('/api/getAllPaces')
 	.get(gameController.getAllPaces);
 	
-app.route('/api/setup/screen/:id')
-	.get(setupController.getGameScreen);
+//app.route('/api/setup/screen/:id')
+//	.get(setupController.getGameScreen);
 
 	
 //When port is open and working

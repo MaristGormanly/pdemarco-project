@@ -50,8 +50,8 @@ exports.getGameData = function(req, res) {
 exports.updateGame = function(req, res) {
 	localGameData.terrain = terrain.getRandomTerrain();
 	localGameData.weather = weather.getRandomWeather();
-	
-	//localGameData.groupHealth -= 3;
+	localGameData.groupHealth = 100;
+	localGameData.daysOnTrail += 1;
 	
 	res.setHeader('Content-Type', 'application/json');
 	res.send(localGameData);
