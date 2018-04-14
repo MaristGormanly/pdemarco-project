@@ -17,6 +17,7 @@ function gameData() {
 	this.messages = []
 }
 
+//Pace and weather effect group health
 exports.getGroupHealth = function() {
 groupHealth = 100;
 	if (paces[0]) { 
@@ -56,9 +57,11 @@ groupHealth = 100;
 	return groupHealth;
 }
 
+//Runs odds of each member dying 
 exports.getDeathCheck = function() {
 groupHealth = 100;
 var players = ["player0","player1","player2","player3","player4"]
+var lost = "The game is over, everyone died"
 	
 	if (groupHealth < 1) {
 		for (var i = 0; i < 5; i++) {
@@ -87,9 +90,13 @@ var players = ["player0","player1","player2","player3","player4"]
 				return players[i] = false;
 			}
 		}
-	}  	
+	}  
+	if ((player0 && player1 && player2 && player3 && player4)=false) {
+		return lost;
+	}
 }
 
+//Two possible ways game can end
 exports.getEnd = function() {
 	var daysOnTrail;
 	var milesTraveled;
