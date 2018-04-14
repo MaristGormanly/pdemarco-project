@@ -37,11 +37,6 @@ exports.getAllPaces = function(req, res) {
 	res.send(pace.getAllPaces());
 }
 
-exports.getAllPaces = function(req, res) {
-	res.setHeader('Content-Type', 'application/json');
-	res.send(pace.getCurrentPace());
-}
-
 exports.getGameData = function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	res.send(localGameData);
@@ -50,10 +45,17 @@ exports.getGameData = function(req, res) {
 exports.updateGame = function(req, res) {
 	localGameData.terrain = terrain.getRandomTerrain();
 	localGameData.weather = weather.getRandomWeather();
-	localGameData.groupHealth = 100;
+//	localGameData.groupHealth = gameData.groupHealth();
+	localGameData.deathCheck = gameData.getDeathCheck();
+	localGameData.end = gameData.getEnd();
 	localGameData.daysOnTrail += 1;
+	localGameData.milesTraveled += 2;
+	localGameData.messages =[]
+	
 	
 	res.setHeader('Content-Type', 'application/json');
 	res.send(localGameData);
 }
+
+
 

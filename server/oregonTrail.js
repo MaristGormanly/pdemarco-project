@@ -60,19 +60,17 @@ app.route('/api/getRandomWeather')
 app.route('/api/getAllWeather')
 	.get(gameController.getAllWeathers);
 	
-app.route('/api/getGroupHealth')
-	.get(gameController.getGroupHealth);
-	
-//app.route('/api/pace')
-//	.get(gameController.getCurrentPace)
-//	.post(gameController.getCurrentPace);
+//app.route('/api/getGroupHealth')
+//	.get(gameController.getGroupHealth);
 
 app.route('/api/getAllPaces')
 	.get(gameController.getAllPaces);
 	
-//app.route('/api/setup/screen/:id')
-//	.get(setupController.getGameScreen);
+app.route('/api/getEnd')
+	.get(gameController.getEnd;
+		
+app.route('/api/getDeathCheck')
+	.get(gameController.getDeathCheck;
 
-	
 //When port is open and working
 	app.listen(1337, () => console.log('Listening on port 1337!'));
