@@ -66,11 +66,11 @@ app.route('/api/getAllWeather')
 app.route('/api/getAllPaces')
 	.get(gameController.getAllPaces);
 	
-app.route('/api/getEnd')
-	.get(gameController.getEnd;
+//app.route('/api/getEnd')
+//	.get(gameController.getEnd);
 		
-app.route('/api/getDeathCheck')
-	.get(gameController.getDeathCheck;
+//app.route('/api/getDeathCheck')
+//	.get(gameController.getDeathCheck);
 
 //When port is open and working
 	app.listen(1337, () => console.log('Listening on port 1337!'));

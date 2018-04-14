@@ -91,9 +91,6 @@ var lost = "The game is over, everyone died"
 			}
 		}
 	}  
-	if ((player0 && player1 && player2 && player3 && player4)=false) {
-		return lost;
-	}
 }
 
 //Two possible ways game can end
