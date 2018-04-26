@@ -60,11 +60,14 @@ app.route('/api/getRandomWeather')
 app.route('/api/getAllWeather')
 	.get(gameController.getAllWeathers);
 	
-//app.route('/api/getGroupHealth')
-//	.get(gameController.getGroupHealth);
+app.route('/api/getGroupHealth')
+	.get(gameController.getGroupHealth);
 
 app.route('/api/getAllPaces')
 	.get(gameController.getAllPaces);
+	
+app.route('/api/getPace')
+	.get(gameController.getPace);
 	
 //app.route('/api/getEnd')
 //	.get(gameController.getEnd);

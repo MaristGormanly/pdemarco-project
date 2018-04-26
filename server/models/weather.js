@@ -6,9 +6,7 @@ function weather(id, type, healthChange, mileChange, probability) {
 	this.probability = probability;
 }
 
-exports.getNewWeather = function(id, type, healthChange, mileChange, probability) {
-	return new weather(id, type, healthChange, mileChange, probability);
-}
+
 
 var weathers = [];
 weathers.push(new weather(0, "Very Hot", -8, .7, .1));
@@ -49,7 +47,6 @@ exports.getRandomWeather = function() {
 		return weathers[10];
 	}
 }
-
 
 exports.getAllWeathers = function() {
 	return weathers;
