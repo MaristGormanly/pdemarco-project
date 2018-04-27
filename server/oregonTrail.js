@@ -69,11 +69,11 @@ app.route('/api/getAllPaces')
 app.route('/api/getPace')
 	.get(gameController.getPace);
 	
-//app.route('/api/getEnd')
-//	.get(gameController.getEnd);
-		
-//app.route('/api/getDeathCheck')
-//	.get(gameController.getDeathCheck);
+app.route('/api/setup/screen/:id') 
+	.get(setupController.getgameScreen);
+	
+app.route('/api/setup/profession') 
+	.post(setupController.saveProfession);
 
 //When port is open and working
 	app.listen(1337, () => console.log('Listening on port 1337!'));
