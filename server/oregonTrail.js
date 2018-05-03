@@ -54,6 +54,9 @@ app.route('/api/gameData')
 app.route('/api/updateGame')
 	.get(gameController.updateGame);
 
+app.route('/api/resetGame')
+	.get(gameController.resetGame);
+
 app.route('/api/getRandomWeather')
 	.get(gameController.getRandomWeather);
 

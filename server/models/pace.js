@@ -7,7 +7,7 @@ function pace(name, miles, healthChange) {
 var paces = [];
 paces.push(new pace("Steady", 2, 0));
 paces.push(new pace("Strenuous", 3, -3));
-paces.push(new pace("Grueling", 4, -8));
+paces.push(new pace("Grueling", 7, -8));
 paces.push(new pace("Resting", 0, 5));
 
 exports.getPace = function() {

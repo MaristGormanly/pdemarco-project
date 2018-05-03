@@ -1,3 +1,5 @@
+var gameContainer = document.getElementById('gameContainer');
+
 function getScreen(screenId) {
 	fetch('/api/setup/screen/' + screenId).then(function(response) {
 		if (response.status !== 200) {
@@ -7,9 +9,13 @@ function getScreen(screenId) {
 		response.text().then(function(data) {
 			gameContainer.innerHTML = data; 
 		})
-		}); 
-	}
-		
+	}); 
+}
+
+//gameScreen(); 
+
+var currentScreen = 0;
+
 	getScreen(0);
 		gameContainer.addEventListener("click", function(e) { 
 			// get the element clicked
@@ -29,18 +35,21 @@ function getScreen(screenId) {
 		
 		if(targetElement.id == "differencesMenuItem") {
 			console.log("learn more!"); 
-		}
-			//currentScreen++;
-			//gameScreen(); });
-			function saveProfession(profession) { 
-				fetch('/api/setup/profession', 
-				{
-				method:'post', 
-				headers: {
-				"Content-type": "application/json; charset=UTF-8" 
-				},
-				body: '{"profession": "' + profession + '"}'
-				}).then(function(response) {
+		}	
+		
+		currentScreen++;
+		
+		});
+			
+			
+function saveProfession(profession) { 
+	fetch('/api/setup/profession', 
+	{
+		method:'post', 
+		headers: {"Content-type": "application/json; charset=UTF-8" 
+		},
+		body: '{"profession": "' + profession + '"}'
+			}).then(function(response) {
 				if (response.status !== 200) {
 					console.log('problem with ajax call! ' + 
 					response.status + " msg: " + response.value);
@@ -50,15 +59,6 @@ function getScreen(screenId) {
 				}
 				console.log("profession " + profession + " saved!"); 
 				});
-			}
-						
-						
-						
-						
-						
-						
-						
-						
-						
+			}		
 						
 						

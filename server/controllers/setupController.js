@@ -1,12 +1,13 @@
-// game screen content exports.startGameScreens = [];
+exports.startGameScreens = [];
+
 var gameData = require('../models/gameData');
 
-var startGame1 = "<p>Many kinds of people made the trip trip to Oregon.</p>" 
-	+ "<p>You may:</p>"
+var startGame1 =  
+	"<p>You may:</p>"
 	+ "<ol id=\"setupQuestions1\" >"
-	+ "<li id=\"bankerMenuItem\">Be a banker from Boston</li>"
-	+ "<li id=\"carpenterMenuItem\">Be a carpenter from Ohio</li>"
-	+ "<li id=\"farmerMenuItem\">Be a farmer from Illinois</li>"
+	+ "<li id=\"bankerMenuItem\">Be a banker from Boston ($2000)</li>"
+	+ "<li id=\"carpenterMenuItem\">Be a carpenter from Ohio ($1800)</li>"
+	+ "<li id=\"farmerMenuItem\">Be a farmer from Illinois ($1500)</li>"
 	+ "<li id=\"differencesMenuItem\">Find out the differences between the choices</li>" + "</ol>"
 	+ "<div id=\"selectedOption\">What is your choice?</div>";
 
@@ -32,7 +33,7 @@ var startGame4 = "<p>It is 1848. Your jumping off place for oregon is Independen
 
 var startGame5 = "";
 
-exports.startGameScreens.push(startGame1); 
+exports.startGameScreens.push(startGame1);
 exports.startGameScreens.push(startGame2); 
 exports.startGameScreens.push(startGame3); 
 exports.startGameScreens.push(startGame4); 
@@ -41,25 +42,14 @@ exports.startGameScreens.push(startGame5);
 exports.getgameScreen = function(req, res) { 
 	console.log("testing!");
 	var gameScreen = exports.startGameScreens[req.params.id];
-
 	res.setHeader('Content-Type', 'application/json'); 
 	res.send(gameScreen);
 };
 
 exports.saveProfession = function(req, res) {
-	console.log("testing");
-	gameData.gameSettings.playerProfession = req.body.profession;
-
-	//console.log("params : " + req.params.playerId + " and " + req.params.playerName + " 	settings: " + game.gameSettings.playerNames[req.params.playerId]);
-	res.setHeader('Content-Type', 'text/plain');
-	res.send(gameData.gameSettings.playerProfession); 
-};
-
-
-
-
-
-
-
-
-
+console.log("testing");
+gameData.gameSettings.playerProfession = req.body.profession;
+console.log("params : " + req.params.playerId + " and " + req.params.playerName + 
+" settings: " + game.gameSettings.playerNames[req.params.playerId]);
+res.setHeader('Content-Type', 'text/plain');
+res.send(gameData.gameSettings.playerProfession); };
