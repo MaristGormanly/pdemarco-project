@@ -73,7 +73,7 @@ app.route('/api/getPace')
 	.get(gameController.getPace);
 	
 app.route('/api/setup/screen/:id') 
-	.get(setupController.getgameScreen);
+	.get(setupController.getGameScreen);
 	
 app.route('/api/setup/profession') 
 	.post(setupController.saveProfession);

@@ -1,5 +1,3 @@
-
-
 var terrain = require('../models/terrain');
 var gameData = require('../models/gameData');
 var pace = require('../models/pace');
@@ -48,6 +46,7 @@ exports.getGameData = function(req, res) {
 }
 
 exports.updateGame = function(req, res) {
+	gameData.getGameData.currentMessage = "";
 	gameData.getGameData.groupHealth += gameData.getGameData.pace.healthChange;
 	gameData.getGameData.groupHealth += gameData.getGameData.weather.healthChange;
 		
@@ -81,7 +80,28 @@ exports.updateGame = function(req, res) {
 				gameData.getGameData.playerStatus[i] = false;
 			}
 			gameData.getGameData.currentMessage = "Everyone has died. You have lost";
-		}	
+	}	
+	
+var rand = Math.floor(Math.random() * 30)
+	console.log(rand);
+	if (rand == 1) {
+		gameData.getGameData.currentMessage = "You cross a river safely and shorten your trip"
+		+ "(Gain 3 extra miles)";
+		gameData.getGameData.milesTraveled += 3;
+	} else if (rand == 2) {
+		gameData.getGameData.currentMessage = "You cross a river and lose your supplies " 
+		+ "(Lose 5 days in trip)";
+		gameData.getGameData.daysOnTrail += 5;
+	} else if (rand == 3) {
+		gameData.getGameData.currentMessage = "You have encountered a group of Indians "
+		+ "and they show you a secret route (Gain 5 extra miles)";
+		gameData.getGameData.milesTraveled += 5;
+	} else if (rand == 4) {
+		gameData.getGameData.currentMessage = "You have been robbed and spend 1 day gathering " 
+		+ "back your supplies";
+		gameData.getGameData.daysOnTrail += 1;	
+	}
+	
 	res.setHeader('Content-Type', 'application/json');
 	res.send(gameData.getGameData)
 }
@@ -91,6 +111,7 @@ exports.updateGame = function(req, res) {
 		var rand = Math.floor(Math.random() * 100)
 			if (rand < percentage) {
 				gameData.getGameData.playerStatus[i] = false;
+				gameData.getGameData.currentMessage = gameData.getGameData.playerNames[i] + " has died"
 			}
 		}
 	}
@@ -110,5 +131,3 @@ exports.resetGame = function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	res.send(gameData.getGameData);
 }
-
-

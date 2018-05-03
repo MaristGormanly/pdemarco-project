@@ -1,4 +1,4 @@
-var gameContainer = document.getElementById('gameContainer');
+//var gameContainer = document.getElementById('gameContainer');
 
 function getScreen(screenId) {
 	fetch('/api/setup/screen/' + screenId).then(function(response) {
@@ -12,39 +12,31 @@ function getScreen(screenId) {
 	}); 
 }
 
-//gameScreen(); 
-
-var currentScreen = 0;
-
-	getScreen(0);
-		gameContainer.addEventListener("click", function(e) { 
-			// get the element clicked
-		var targetElement = event.target || event.srcElement;
-		
-		if(targetElement.id == "bankerMenuItem") { 
-			saveProfession("banker");
-		}
-		
-		if(targetElement.id == "carpenterMenuItem") {
-			saveProfession("carpenter"); 
-		}
-		
-		if(targetElement.id == "farmerMenuItem") { 
-			saveProfession("farmer");
-		}
-		
-		if(targetElement.id == "differencesMenuItem") {
-			console.log("learn more!"); 
-		}	
-		
-		currentScreen++;
-		
-		});
-			
-			
+//var currentScreen = 0;
+getScreen(0);
+	
+	
+gameContainer.addEventListener("click", function(e) { 
+	var targetElement = event.target || event.srcElement;
+	if(targetElement.id == "bankerMenuItem") { 
+		saveProfession("banker");
+	}
+	if(targetElement.id == "carpenterMenuItem") {
+		saveProfession("carpenter"); 
+	}
+	if(targetElement.id == "farmerMenuItem") { 
+		saveProfession("farmer");
+	}
+	if(targetElement.id == "differencesMenuItem") {
+		console.log("learn more!"); 
+	}		
+//		currentScreen++;
+//		gameScreen(); 
+});
+	
 function saveProfession(profession) { 
 	fetch('/api/setup/profession', 
-	{
+	  {
 		method:'post', 
 		headers: {"Content-type": "application/json; charset=UTF-8" 
 		},

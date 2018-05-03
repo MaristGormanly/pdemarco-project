@@ -4,9 +4,9 @@ var pace = require("./pace");
 
 function gameData() {
 	this.groupHealth = 100;
-	this.playerNames = ["Preston", "Raislan", "Aang", "Korra", "Suki"];
+	this.playerNames = ["P", "D", "Q", "R", "S"];
 	this.playerStatus = [true, true, true, true, true];
-	this.playerProfession = "Farmer";
+	this.playerProfession = null;
 	this.playerMoney = 1000;
 	this.startMonth = "January";
 	this.milesTraveled = 0;

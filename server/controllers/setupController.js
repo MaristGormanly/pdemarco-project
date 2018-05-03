@@ -39,17 +39,20 @@ exports.startGameScreens.push(startGame3);
 exports.startGameScreens.push(startGame4); 
 exports.startGameScreens.push(startGame5);
 
-exports.getgameScreen = function(req, res) { 
+exports.getGameScreen = function(req, res) { 
 	console.log("testing!");
 	var gameScreen = exports.startGameScreens[req.params.id];
 	res.setHeader('Content-Type', 'application/json'); 
 	res.send(gameScreen);
 };
 
+
 exports.saveProfession = function(req, res) {
 console.log("testing");
-gameData.gameSettings.playerProfession = req.body.profession;
+gameData.playerProfession = req.body.profession;
+
 console.log("params : " + req.params.playerId + " and " + req.params.playerName + 
-" settings: " + game.gameSettings.playerNames[req.params.playerId]);
+" settings: " + gameData.gameSettings.playerNames[req.params.playerId]);
 res.setHeader('Content-Type', 'text/plain');
-res.send(gameData.gameSettings.playerProfession); };
+res.send(gameData.gameSettings.playerProfession); 
+};
