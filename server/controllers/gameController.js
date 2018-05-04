@@ -82,8 +82,7 @@ exports.updateGame = function(req, res) {
 			gameData.getGameData.currentMessage = "Everyone has died. You have lost";
 	}	
 	
-var rand = Math.floor(Math.random() * 30)
-	console.log(rand);
+	var rand = Math.floor(Math.random() * 30)
 	if (rand == 1) {
 		gameData.getGameData.currentMessage = "You cross a river safely and shorten your trip"
 		+ "(Gain 3 extra miles)";
