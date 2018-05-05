@@ -32,7 +32,7 @@ app.get('/game', function(req, res) {
 	res.sendFile('game.html', {root: './client/views'});
 })
 
-
+var gameData = require('./models/gameData');
 var topTenController = require('./controllers/topTenController');
 var gameController = require('./controllers/gameController');
 var setupController = require('./controllers/setupController');
@@ -77,6 +77,16 @@ app.route('/api/setup/screen/:id')
 	
 app.route('/api/setup/profession') 
 	.post(setupController.saveProfession);
+	
+app.route('/api/setup/saveWagonLeader')
+	.post(setupController.wagonLeader);
+	
+app.route('/api/setup/saveMembers')
+	.post(setupController.members);
+	
+app.route('/api/setup/month')
+	.post(setupController.saveMonth);
+
 
 //When port is open and working
 	app.listen(1337, () => console.log('Listening on port 1337!'));

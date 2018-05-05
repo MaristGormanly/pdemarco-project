@@ -4,7 +4,7 @@ var pace = require("./pace");
 
 function gameData() {
 	this.groupHealth = 100;
-	this.playerNames = ["P", "D", "Q", "R", "S"];
+	this.playerNames = null;
 	this.playerStatus = [true, true, true, true, true];
 	this.playerProfession = null;
 	this.playerMoney = 1000;
@@ -13,8 +13,7 @@ function gameData() {
 	this.pace = pace.getAllPaces()[1];
 	this.daysOnTrail = 0;
 	this.weather = weather.getRandomWeather();
-	this.terrain = "desert";
-	this.messages = [];
+	this.terrain = terrain.getRandomTerrain();
 	this.currentMessage = null;
 }
 

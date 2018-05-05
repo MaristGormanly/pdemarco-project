@@ -82,38 +82,59 @@ exports.updateGame = function(req, res) {
 			gameData.getGameData.currentMessage = "Everyone has died. You have lost";
 	}	
 	
-	var rand = Math.floor(Math.random() * 30)
-	if (rand == 1) {
-		gameData.getGameData.currentMessage = "You cross a river safely and shorten your trip"
-		+ "(Gain 3 extra miles)";
-		gameData.getGameData.milesTraveled += 3;
-	} else if (rand == 2) {
-		gameData.getGameData.currentMessage = "You cross a river and lose your supplies " 
-		+ "(Lose 5 days in trip)";
-		gameData.getGameData.daysOnTrail += 5;
-	} else if (rand == 3) {
-		gameData.getGameData.currentMessage = "You have encountered a group of Indians "
-		+ "and they show you a secret route (Gain 5 extra miles)";
-		gameData.getGameData.milesTraveled += 5;
-	} else if (rand == 4) {
-		gameData.getGameData.currentMessage = "You have been robbed and spend 1 day gathering " 
-		+ "back your supplies";
-		gameData.getGameData.daysOnTrail += 1;	
+	if (gameData.getGameData.groupHealth > 0) { 
+		var rand = Math.floor(Math.random() * 30)
+		if (rand == 1) {
+			gameData.getGameData.currentMessage += "You cross a river safely and shorten your trip "
+			+ "(Gain 3 extra miles)";
+			gameData.getGameData.milesTraveled += 3;
+		} else if (rand == 2) {
+			gameData.getGameData.currentMessage += "You cross a river and lose your supplies " 
+			+ "(Lose 5 days in trip)";
+			gameData.getGameData.daysOnTrail += 5;
+		} else if (rand == 3) {
+			gameData.getGameData.currentMessage += "You have encountered a group of Indians "
+			+ "and they show you a secret route (Gain 5 extra miles)";
+			gameData.getGameData.milesTraveled += 5;
+		} else if (rand == 4) {
+			gameData.getGameData.currentMessage += "You have been robbed and spend 1 day gathering " 
+			+ "back your supplies";
+			gameData.getGameData.daysOnTrail += 1;	
+		}
+	}
+	
+	if (gameData.getGameData.groupHealth > 0) { 
+		if (gameData.getGameData.terrain == "Valley") {
+			gameData.getGameData.currentMessage += "You are in the middle of a valley " 
+			+ "(+2 to group health)";
+			gameData.getGameData.groupHealth  += 2;
+		} else if (gameData.getGameData.terrain == "Mountain") {
+			gameData.getGameData.currentMessage += "You are in the middle of the mountains " 
+			+ "(+1 to group health)";
+			gameData.getGameData.groupHealth  += 1;
+		} else if (gameData.getGameData.terrain == "Forest") {
+			gameData.getGameData.currentMessage += "You are in the middle of a forrest " 
+			+ "(no health change to group health)";
+		} else if (gameData.getGameData.terrain == "Desert") {
+			gameData.getGameData.currentMessage += "You are in the middle of a desert " 
+			+ "(-1 to group health)";
+			gameData.getGameData.groupHealth  -= 1;	
+		}
 	}
 	
 	res.setHeader('Content-Type', 'application/json');
 	res.send(gameData.getGameData)
 }
 
-	function deathCheck (percentage) {
-	for (i = 0; i < gameData.getGameData.playerNames.length; i++) {
-		var rand = Math.floor(Math.random() * 100)
-			if (rand < percentage) {
-				gameData.getGameData.playerStatus[i] = false;
-				gameData.getGameData.currentMessage = gameData.getGameData.playerNames[i] + " has died"
-			}
+function deathCheck (percentage) {
+for (i = 0; i < gameData.getGameData.playerNames.length; i++) {
+	var rand = Math.floor(Math.random() * 100)
+		if (rand < percentage) {
+			gameData.getGameData.playerStatus[i] = false;
+			gameData.getGameData.currentMessage += gameData.getGameData.playerNames[i] + " has died "
 		}
 	}
+}
 
 exports.resetGame = function(req, res) {
 	gameData.getGameData.terrain = terrain.getRandomTerrain();

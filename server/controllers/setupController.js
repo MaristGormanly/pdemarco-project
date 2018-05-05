@@ -15,10 +15,11 @@ var startGame2 = "<p>What is the first name of the wagon leader?</p>"
 	+ "Leader Name: <input id=\"player0\" />"
 	+ "<input type=\"button\" class=\"button-1\" id=\"page1sub\" value=\"Next\" />";
 
-var startGame3 = "<p>What are the first names of the other members of your party?</p>" + "Player Name: <input id=\"player1\" /><br />"
-	+ "Player Name: <input id=\"player2\" /><br />"
-	+ "Player Name: <input id=\"player3\" /><br />"
-	+ "Player Name: <input id=\"player4\" /><br />"
+var startGame3 = "<p>What are the first names of the other members of your party?</p>" 
+	+ "Player Name: <input id=\"player1\" /><br/>"
+	+ "Player Name: <input id=\"player2\" /><br/>"
+	+ "Player Name: <input id=\"player3\" /><br/>"
+	+ "Player Name: <input id=\"player4\" /><br/>"
 	+ "<input type=\"button\" class=\"button-1\" id=\"page2sub\" value=\"Next\" />";
 
 var startGame4 = "<p>It is 1848. Your jumping off place for oregon is Independence, Missouri. You must decide which month to leave Independence.</p>"
@@ -31,7 +32,14 @@ var startGame4 = "<p>It is 1848. Your jumping off place for oregon is Independen
 	+ "</ol>"
 	+ "<div id=\"selectedOption\">What is your choice?</div>";
 
-var startGame5 = "";
+var startGame5 = "<p>Here are your options</p>"
+	+ "<ol id=\"professionItem\">Profession: </ol>"
+	+ "<ol id=\"wagonLeaderItem\">Wagon Leader: </ol>"
+	+ "<ol id=\"membersItem\">Members: </ol>"
+	+ "<ol id=\"monthItem\">Starting Month: </ol>";
+	+ "<input type=\"button\" class=\"button-1\" id=\"page3sub\" value=\"Next\" />";
+	
+	
 
 exports.startGameScreens.push(startGame1);
 exports.startGameScreens.push(startGame2); 
@@ -46,13 +54,35 @@ exports.getGameScreen = function(req, res) {
 	res.send(gameScreen);
 };
 
-
 exports.saveProfession = function(req, res) {
 console.log("testing");
-gameData.playerProfession = req.body.profession;
+gameData.getGameData.playerProfession = req.body.profession;
 
-console.log("params : " + req.params.playerId + " and " + req.params.playerName + 
-" settings: " + gameData.gameSettings.playerNames[req.params.playerId]);
 res.setHeader('Content-Type', 'text/plain');
-res.send(gameData.gameSettings.playerProfession); 
+res.send(gameData.getGameData.playerProfession); 
 };
+
+exports.wagonLeader = function(req, res) {
+console.log(req.body.names);
+gameData.getGameData.playerNames = req.body.names;
+
+res.setHeader('Content-Type', 'text/plain');
+res.send(gameData.getGameData.playerNames);
+};
+
+exports.members= function(req, res) {
+console.log(req.body.names1);
+gameData.getGameData.playerNames1 = req.body.names;
+
+res.setHeader('Content-Type', 'text/plain');
+res.send(gameData.getGameData.playerNames);
+};
+
+exports.saveMonth = function(req, res) {
+console.log(req.body.month);
+gameData.getGameData.startMonth = req.body.names;
+
+res.setHeader('Content-Type', 'text/plain');
+res.send(gameData.getGameData.startMonth);
+};
+
